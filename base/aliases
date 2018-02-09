@@ -3,30 +3,30 @@
 unamestr=`uname -s`
 
 case "${unamestr}" in
-	Linux*)     machine=Linux;;
-	Darwin*)    machine=Mac;;
-	FreeBSD*)    machine=Mac;;
+    Linux*)     machine=Linux;;
+    Darwin*)    machine=Mac;;
+    FreeBSD*)    machine=Mac;;
 esac
 
-# Platform specific 
+# Platform specific
 # Linux
 if [[ "$unamestr" == 'Linux' ]]; then
     alias rewifi='nmcli nm wifi off && nmcli nm wifi on'
-	alias bashrc='vim ~/.bashrc'
- 	alias sourcebashrc='source ~/.bashrc'
-# Mac OS X
-elif [[ "$unamestr" == 'FreeBSD' || "$unamestr" == 'Darwin' ]]; then
+    alias bashrc='vim ~/.bashrc'
+    alias sourcebashrc='source ~/.bashrc'
+    # Mac OS X
+    elif [[ "$unamestr" == 'FreeBSD' || "$unamestr" == 'Darwin' ]]; then
     alias timestamp='date +%s | pbcopy; echo "Timestamp copied to clipboard"; date +%s;'
     alias md='open -a MacDown'
-	alias bashrc='vim ~/.bash_profile'
- 	alias sourcebashrc='source ~/.bash_profile'
+    alias bashrc='vim ~/.bash_profile'
+    alias sourcebashrc='source ~/.bash_profile'
 fi
 
- # Personal aliases
- alias vimrc='vim ~/.vimrc'
- 
- alias cdhome='cd ~/'
- alias cdgoarashout='cd $GOPATH/src/github.com/arashout'
+# Personal aliases
+alias vimrc='vim ~/.vimrc'
+
+alias cdhome='cd ~/'
+alias cdgoarashout='cd $GOPATH/src/github.com/arashout'
 
 ###########################################################################
 # Very handy tweaks
@@ -42,7 +42,7 @@ alias wget='wget -c' # resumes downloads by default
 alias gs='git status'
 alias gc='git commit -m'
 alias gca='git commit -a -m'
-alias gp='git push' 
+alias gp='git push'
 alias ga.='git add .'
 alias gd='git diff'
 alias gch='git checkout'
