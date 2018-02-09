@@ -1,8 +1,28 @@
 #!/bin/sh
- 
+
+unamestr=`uname -s`
+
+case "${unamestr}" in
+	Linux*)     machine=Linux;;
+	Darwin*)    machine=Mac;;
+	FreeBSD*)    machine=Mac;;
+esac
+
+# Platform specific 
+# Linux
+if [[ "$unamestr" == 'Linux' ]]; then
+    alias rewifi='nmcli nm wifi off && nmcli nm wifi on'
+	alias bashrc='vim ~/.bashrc'
+ 	alias sourcebashrc='source ~/.bashrc'
+# Mac OS X
+elif [[ "$unamestr" == 'FreeBSD' || "$unamestr" == 'Darwin' ]]; then
+    alias timestamp='date +%s | pbcopy; echo "Timestamp copied to clipboard"; date +%s;'
+    alias md='open -a MacDown'
+	alias bashrc='vim ~/.bash_profile'
+ 	alias sourcebashrc='source ~/.bash_profile'
+fi
+
  # Personal aliases
- alias bashprofile='vim ~/.bash_profile'
- alias sourcebashprofile='source ~/.bash_profile'
  alias vimrc='vim ~/.vimrc'
  
  alias cdhome='cd ~/'
@@ -27,70 +47,9 @@ alias ga.='git add .'
 alias gd='git diff'
 alias gch='git checkout'
 
-# check if git name and email is set, if not set it to default
-if [[ ! $(git config --global user.email) ]]; then
-    echo "Git name and email conf not set, set them automatically"
-    git config --global user.email "arash.out@gmail.com"
-    git config --global user.name "Arash Outadi"
-    git config --global core.editor "code"
-fi
-
 # docker shortcuts
 alias dp='docker ps'
 alias dpa='docker ps -a'
 alias dstatus='docker-compose exec dev supervisorctl status'
 alias dlog='docker-compose logs dev'
 alias dstopall='docker stop $(docker ps -aq)'
-
-###########################################################################
-# Utilities
-###
-
-function extract {
-    if [ -z "$1" ]; then
-	# display usage if no parameters given
-	echo "Usage: extract <path/file_name>.<zip|rar|bz2|gz|tar|tbz2|tgz|Z|7z|xz|ex|tar.bz2|tar.gz|tar.xz>"
-    else
-		if [ -f $1 ] ; then
-			# NAME=${1%.*}
-			# echo $NAME
-				# mkdir $NAME && cd $NAME
-				case $1 in
-			*.tar.bz2)   tar xvjf ./$1    ;;
-			*.tar.gz)    tar xvzf ./$1    ;;
-			*.tar.xz)    tar xvJf ./$1    ;;
-			*.lzma)      unlzma ./$1      ;;
-			*.bz2)       bunzip2 ./$1     ;;
-			*.rar)       unrar x -ad ./$1 ;;
-			*.gz)        gunzip ./$1      ;;
-			*.tar)       tar xvf ./$1     ;;
-			*.tbz2)      tar xvjf ./$1    ;;
-			*.tgz)       tar xvzf ./$1    ;;
-			*.zip)       unzip ./$1       ;;
-			*.Z)         uncompress ./$1  ;;
-			*.7z)        7z x ./$1        ;;
-			*.xz)        unxz ./$1        ;;
-			*.exe)       cabextract ./$1  ;;
-			*)           echo "extract: '$1' - unknown archive method" ;;
-				esac
-		else
-				echo "$1 - file does not exist"
-		fi
-    fi
-}
-
-###########################################################################
-# Platform specific
-###
-
-unamestr=`uname`
-
-# Linux
-if [[ "$unamestr" == 'Linux' ]]; then
-    alias rewifi='nmcli nm wifi off && nmcli nm wifi on'
-
-# Mac OS X
-elif [[ "$unamestr" == 'FreeBSD' || "$unamestr" == 'Darwin' ]]; then
-    alias timestamp='date +%s | pbcopy; echo "Timestamp copied to clipboard"; date +%s;'
-    alias md='open -a MacDown'
-fi
