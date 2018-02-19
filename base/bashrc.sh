@@ -1,3 +1,5 @@
+# Useful functions from habitat
+
 export GOPATH=/Users/arashoutadi/go
 export PATH=$PATH:$GOPATH/bin
 

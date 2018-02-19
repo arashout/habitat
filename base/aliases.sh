@@ -12,21 +12,18 @@ esac
 # Linux
 if [[ "$unamestr" == 'Linux' ]]; then
     alias rewifi='nmcli nm wifi off && nmcli nm wifi on'
-    alias bashrc='vim ~/.bashrc'
+    alias bashrc='code ~/.bashrc'
     alias sourcebashrc='source ~/.bashrc'
     # Mac OS X
     elif [[ "$unamestr" == 'FreeBSD' || "$unamestr" == 'Darwin' ]]; then
     alias timestamp='date +%s | pbcopy; echo "Timestamp copied to clipboard"; date +%s;'
     alias md='open -a MacDown'
-    alias bashrc='vim ~/.bash_profile'
-    alias sourcebashrc='source ~/.bash_profile'
+    alias bashprofile='code ~/.bash_profile'
+    alias sourceprofile='source ~/.bash_profile'
 fi
 
 # Personal aliases
-alias vimrc='vim ~/.vimrc'
-
 alias cdhome='cd ~/'
-alias cdgoarashout='cd $GOPATH/src/github.com/arashout'
 
 ###########################################################################
 # Very handy tweaks
@@ -35,7 +32,6 @@ alias cdgoarashout='cd $GOPATH/src/github.com/arashout'
 alias chmox='chmod +x'
 alias schmox='sudo chmod +x'
 
-# this one saved by butt so many times
 alias wget='wget -c' # resumes downloads by default
 
 # git shortcuts
@@ -46,6 +42,8 @@ alias gp='git push'
 alias ga.='git add .'
 alias gd='git diff'
 alias gch='git checkout'
+
+alias bfg='java -jar ~/Downloads/bfg.jar'
 
 # docker shortcuts
 alias dp='docker ps'
