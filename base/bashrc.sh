@@ -8,15 +8,6 @@ if [ -f ~/.git-completion.bash ]; then
     . ~/.git-completion.bash
 fi
 
-generate_log(){
-    now=`date +"%Y-%m-%d"`
-    filepath=~/Documents/Logs/$now-log.md
-    touch $filepath
-    log_string="##${now}\n### TODO:\n\n### Stand-Up:\n\n### Questions:\n### Notes:\n"
-    echo -e $log_string > $filepath
-    macdown $filepath
-}
-
 send_todays_log(){
     now=`date +"%Y-%m-%d"`
     filepath=~/Documents/Logs/$now-log.md
@@ -24,6 +15,7 @@ send_todays_log(){
 
     export TODAYS_LOG_MD=$markdown_string
     # TODO: Write custom Python script that parses Github Markdown to Slack markdown
+    # TODO: Send at 6pm everyday
     curl --trace-ascii dump.txt -X POST -H "Authorization: Bearer ${SLACK_API_TOKEN}" \
     -H 'Content-type: application/json' \
     --data "$(python -c 'import json, os, sys; print json.dumps({
@@ -36,6 +28,21 @@ send_todays_log(){
     echo # To create a new line after curl
     
 }
+
+generate_log(){
+    now=`date +"%Y-%m-%d"`
+    filepath=~/Documents/Logs/$now-log.md
+    
+    touch $filepath || exit
+
+    log_string="##${now}\n### TODO:\n\n### Stand-Up:\n\n### Questions:\n### Notes:\n"
+    echo -e $log_string > $filepath
+    macdown $filepath
+
+    send_todays_log() | at 18:00
+}
+
+
 
 # check if git name and email is set, if not set it to default
 if [[ ! $(git config --global user.email) ]]; then
