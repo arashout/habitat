@@ -38,7 +38,7 @@ generate_log(){
     echo -e $log_string > $filepath
     macdown $filepath
 
-    send_todays_log() | at 18:00
+    send_todays_log | at 18:00
 }
 
 
