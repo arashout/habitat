@@ -15,7 +15,6 @@ send_todays_log(){
 
     export TODAYS_LOG_MD=$markdown_string
     # TODO: Write custom Python script that parses Github Markdown to Slack markdown
-    # TODO: Send at 6pm everyday
     curl --trace-ascii dump.txt -X POST -H "Authorization: Bearer ${SLACK_API_TOKEN}" \
     -H 'Content-type: application/json' \
     --data "$(python -c 'import json, os, sys; print json.dumps({
