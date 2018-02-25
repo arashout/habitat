@@ -1,4 +1,5 @@
 #!/bin/sh
+alias bashrc="code ~/.bashrc"
 
 unamestr=`uname -s`
 
@@ -12,10 +13,11 @@ esac
 # Linux
 if [[ "$unamestr" == 'Linux' ]]; then
     alias rewifi='nmcli nm wifi off && nmcli nm wifi on'
-    alias bashrc='code ~/.bashrc'
     alias sourcebashrc='source ~/.bashrc'
-    # Mac OS X
-    elif [[ "$unamestr" == 'FreeBSD' || "$unamestr" == 'Darwin' ]]; then
+    # Clipboard
+    alias cb="xclip -selection c"
+# Mac OS X
+elif [[ "$unamestr" == 'FreeBSD' || "$unamestr" == 'Darwin' ]]; then
     alias timestamp='date +%s | pbcopy; echo "Timestamp copied to clipboard"; date +%s;'
     alias md='open -a MacDown'
     alias bashprofile='code ~/.bash_profile'
@@ -24,10 +26,9 @@ fi
 
 # Personal aliases
 alias cdhome='cd ~/'
+alias sendtodayslog='$HABITAT/scripts/send_todays_log.sh'
 
-###########################################################################
 # Very handy tweaks
-###
 
 alias chmox='chmod +x'
 alias schmox='sudo chmod +x'

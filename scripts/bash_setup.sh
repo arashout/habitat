@@ -8,5 +8,6 @@ esac
 
 # MAC Setup
 if [[ $machine == 'Mac' ]]; then
+    # Append .bashrc
     cat ../base/bashrc.sh >> $HOME/.bashrc
 fi

@@ -1,12 +1,15 @@
-# Useful functions from habitat
-
-export GOPATH=/Users/arashoutadi/go
-export PATH=$PATH:$GOPATH/bin
-
 # Git autocomplete
 if [ -f ~/.git-completion.bash ]; then
     . ~/.git-completion.bash
 fi
+
+# Nightlight
+night_light(){
+    gsettings set org.gnome.settings-daemon.plugins.color night-light-enabled true
+    gsettings set org.gnome.settings-daemon.plugins.color night-light-schedule-from 18.0
+    gsettings set org.gnome.settings-daemon.plugins.color night-light-schedule-to 8.0
+    gsettings set org.gnome.settings-daemon.plugins.color night-light-temperature uint32 1700
+}
 
 generate_log(){
     now=`date +"%Y-%m-%d"`
@@ -18,7 +21,7 @@ generate_log(){
     echo -e $log_string > $filepath
     macdown $filepath
 
-    at -f ~/habitat/scripts/send_todays_log.sh 18:00
+    at -f $HABITAT/scripts/send_todays_log.sh 18:00
 }
 
 # check if git name and email is set, if not set it to default
