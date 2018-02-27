@@ -22,6 +22,10 @@ generate_log(){
     macdown $filepath
 }
 
+#####
+# GIT
+#####
+
 # check if git name and email is set, if not set it to default
 if [[ ! $(git config --global user.email) ]]; then
     echo "Git name and email conf not set, set them automatically"
@@ -30,9 +34,16 @@ if [[ ! $(git config --global user.email) ]]; then
     git config --global core.editor "code"
 fi
 
-###########################################################################
+# Git Checkout Default
+function gchd() {
+    git checkout -b "$@"
+    git branch -u origin/"$@" # So I can avoid the set upstream stuff
+}
+
+
+###########
 # Utilities
-###
+###########
 
 function extract {
     if [ -z "$1" ]; then
