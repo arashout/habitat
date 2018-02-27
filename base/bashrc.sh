@@ -20,8 +20,6 @@ generate_log(){
     log_string="##${now}\n### TODO:\n\n### Stand-Up:\n\n### Questions:\n### Notes:\n"
     echo -e $log_string > $filepath
     macdown $filepath
-
-    at -f $HABITAT/scripts/send_todays_log.sh 18:00
 }
 
 # check if git name and email is set, if not set it to default
