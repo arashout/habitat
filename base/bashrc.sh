@@ -35,7 +35,7 @@ if [[ ! $(git config --global user.email) ]]; then
 fi
 
 # Git Checkout Default
-function gchd() {
+function gchb() {
     git checkout -b "$@"
     git branch -u origin/"$@" # So I can avoid the set upstream stuff
 }
