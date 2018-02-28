@@ -34,13 +34,6 @@ if [[ ! $(git config --global user.email) ]]; then
     git config --global core.editor "code"
 fi
 
-# Git Checkout Default
-function gchb() {
-    git checkout -b "$@"
-    git branch -u origin/"$@" # So I can avoid the set upstream stuff
-}
-
-
 ###########
 # Utilities
 ###########

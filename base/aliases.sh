@@ -40,6 +40,8 @@ alias gs='git status'
 alias gc='git commit -m'
 alias gca='git commit -a -m'
 alias gp='git push'
+# Git push the current branch
+alias gpcb='git push origin $(git rev-parse --abbrev-ref HEAD)' 
 alias ga.='git add .'
 alias gd='git diff'
 alias gch='git checkout'
