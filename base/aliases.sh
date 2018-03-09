@@ -36,7 +36,9 @@ alias schmox='sudo chmod +x'
 alias wget='wget -c' # resumes downloads by default
 
 # git shortcuts
-alias gs='git status'
+alias gs='git stash'
+alias gsp='git stash pop'
+alias gst='git status'
 alias gc='git commit -m'
 alias gca='git commit -a -m'
 alias gp='git push'
