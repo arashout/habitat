@@ -1,8 +1,3 @@
-# Git autocomplete
-if [ -f ~/.git-completion.bash ]; then
-    . ~/.git-completion.bash
-fi
-
 # Nightlight
 night_light(){
     gsettings set org.gnome.settings-daemon.plugins.color night-light-enabled true
@@ -25,6 +20,16 @@ generate_log(){
 #####
 # GIT
 #####
+
+if [ -f ~/.git-completion.bash ]; then
+    . ~/.git-completion.bash
+fi
+
+function gchb() {
+    git checkout -b "$@"
+    git branch -u origin/"$@" # So I can avoid the set upstream stuff
+}
+
 
 # check if git name and email is set, if not set it to default
 if [[ ! $(git config --global user.email) ]]; then
