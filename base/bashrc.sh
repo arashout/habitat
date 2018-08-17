@@ -43,6 +43,10 @@ fi
 # Utilities
 ###########
 
+cheat(){
+    curl http://cheat.sh/"$1"/"$2"
+}
+
 function extract {
     if [ -z "$1" ]; then
         # display usage if no parameters given
