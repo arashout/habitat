@@ -26,10 +26,8 @@ fi
 
 # Personal aliases
 alias cdhome='cd ~/'
-alias sendtodayslog='$HABITAT/scripts/send_todays_log.sh'
 
 # Very handy tweaks
-
 alias chmox='chmod +x'
 alias schmox='sudo chmod +x'
 

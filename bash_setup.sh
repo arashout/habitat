@@ -6,8 +6,5 @@ case "${unamestr}" in
     FreeBSD*)    machine=Mac;;
 esac
 
-# MAC Setup
-if [[ $machine == 'Mac' ]]; then
-    # Append .bashrc
-    cat ../base/bashrc.sh >> $HOME/.bashrc
-fi
+cat ./bashrc.sh | cat - $HOME/.bashrc > temp && mv temp $HOME/.bashrc
+cat bash_aliases.sh > $HOME/.bash_aliases
