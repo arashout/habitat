@@ -6,17 +6,6 @@ night_light(){
     gsettings set org.gnome.settings-daemon.plugins.color night-light-temperature uint32 1700
 }
 
-generate_log(){
-    now=`date +"%Y-%m-%d"`
-    filepath=~/Documents/Logs/$now-log.md
-    
-    touch $filepath || exit
-
-    log_string="##${now}\n### TODO:\n\n### Stand-Up:\n\n### Questions:\n### Notes:\n"
-    echo -e $log_string > $filepath
-    macdown $filepath
-}
-
 #####
 # GIT
 #####
