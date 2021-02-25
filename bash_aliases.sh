@@ -40,11 +40,12 @@ alias gst='git status'
 alias gc='git commit -m'
 alias gca='git commit -a -m'
 alias gp='git push'
-# Git push the current branch
-alias gpcb='git push origin $(git rev-parse --abbrev-ref HEAD)' 
 alias ga.='git add .'
 alias gd='git diff'
 alias gch='git checkout'
+# git push the current branch
+alias gpcb='git push origin $(git rev-parse --abbrev-ref HEAD)' 
+alias grh='git reset --hard HEAD'
 
 alias bfg='java -jar ~/Downloads/bfg.jar'
 
