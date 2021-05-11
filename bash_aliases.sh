@@ -1,5 +1,6 @@
 #!/bin/sh
 alias bashrc="code ~/.bashrc"
+alias zrc="code ~/.zshrc"
 
 unamestr=`uname -s`
 
